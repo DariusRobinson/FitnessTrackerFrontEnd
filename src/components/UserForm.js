@@ -15,7 +15,8 @@ const UserForm = ({ logInOrRegister, setLogInOrRegister }) => {
     let username = event.target.username.value;
     let password = event.target.password.value;
     if (logInOrRegister === "Login") {
-      loginUser(username, password);
+     const response = await loginUser(username, password);
+      const token = response.token
     }
     if (logInOrRegister === 'Register'){
         registerUser(username, password)
