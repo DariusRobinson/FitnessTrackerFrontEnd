@@ -7,25 +7,21 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "NODE_ENV='development' react-scripts start"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DariusRobinson/FitnessTrackerFrontEnd.git"
-  },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/DariusRobinson/FitnessTrackerFrontEnd/issues"
-  },
-  "homepage": "https://github.com/DariusRobinson/FitnessTrackerFrontEnd#readme",
+ 
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0"
   },
+
   "devDependencies": {
     "react-scripts": "^5.0.1"
   },
+
   "browserslist": {
     "production": [
       ">0.2%",
