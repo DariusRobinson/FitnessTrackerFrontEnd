@@ -1,0 +1,44 @@
+html, body {
+    margin:0px;
+    height:100%;
+  }
+#userFormContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    border: solid 2px black;
+}
+
+#userForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px rgb(251, 0, 0);
+    height: 250px;
+    width: 400px;
+}
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+
+  .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+
+  .tab button:hover {
+    background-color: #ddd;
+  }
+
+
+  .tab button.active {
+    background-color: #ccc;
+  }
