@@ -1,5 +1,6 @@
 import React from "react";
 import { registerUser, loginUser } from "../api";
+import {storeUsername, storeToken} from '../auth'
 
 const UserForm = ({ logInOrRegister, setLogInOrRegister }) => {
   const handleOnclick = (event) => {
@@ -9,7 +10,7 @@ const UserForm = ({ logInOrRegister, setLogInOrRegister }) => {
 
     return true;
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // console.log(event.target.username.value)
     let username = event.target.username.value;
@@ -25,10 +26,10 @@ const UserForm = ({ logInOrRegister, setLogInOrRegister }) => {
   return (
     <>
       <div className="tab">
-        <button className="tablinks" name="Login" onClick={handleOnclick}>
+        <button className={`tablinks ${(logInOrRegister==='Login' ? 'active' : null)}`} name="Login" onClick={handleOnclick}>
           Login
         </button>
-        <button className="tablinks" name="Register" onClick={handleOnclick}>
+        <button className={`tablinks ${(logInOrRegister==='Register' ? 'active' : null)}`} name="Register" onClick={handleOnclick}>
           Register
         </button>
       </div>
