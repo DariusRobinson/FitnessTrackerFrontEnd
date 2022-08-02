@@ -1,8 +1,9 @@
 import React from "react";
-import { registerUser, loginUser } from "../api";
+import { registerUser, loginUser} from "../api";
 import { storeUsername, storeToken } from "../auth";
 
-const UserForm = ({ logInOrRegister, setLogInOrRegister, setCurrentUser }) => {
+
+const UserForm = ({ logInOrRegister, setLogInOrRegister, setCurrentUser, setToken }) => {
   const handleOnclick = (event) => {
     event.preventDefault();
     let currentTab = event.target.name;
@@ -19,6 +20,7 @@ const UserForm = ({ logInOrRegister, setLogInOrRegister, setCurrentUser }) => {
       const response = await loginUser(username, password);
       if (response.token) {
         const token = response.token;
+        setToken(token)
         storeToken(token);
         storeUsername(username);
         setCurrentUser(username)
@@ -35,6 +37,7 @@ const UserForm = ({ logInOrRegister, setLogInOrRegister, setCurrentUser }) => {
       }
       if (response.token) {
         const token = response.token;
+        setToken(token)
         storeToken(token);
         storeUsername(username);
         setCurrentUser(username)

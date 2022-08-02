@@ -16,8 +16,8 @@ export const registerUser = async (username, password) => {
       }),
     });
     const result = await response.json();
-    
-    console.log(result)
+
+    console.log(result);
     return result;
   } catch (error) {
     console.error(error);
@@ -38,8 +38,22 @@ export const loginUser = async (username, password) => {
       }),
     });
     const result = await response.json();
-    console.log(result)
+    console.log(result);
 
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getAllActivities = async () => {
+  try {
+    const response = await fetch(`${BaseURL}activities`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const result = await response.json();
     return result;
   } catch (error) {
     console.error(error);
