@@ -2,7 +2,7 @@ import React from "react";
 import { registerUser, loginUser } from "../api";
 import { storeUsername, storeToken } from "../auth";
 
-const UserForm = ({ logInOrRegister, setLogInOrRegister }) => {
+const UserForm = ({ logInOrRegister, setLogInOrRegister, setCurrentUser }) => {
   const handleOnclick = (event) => {
     event.preventDefault();
     let currentTab = event.target.name;
@@ -21,6 +21,7 @@ const UserForm = ({ logInOrRegister, setLogInOrRegister }) => {
         const token = response.token;
         storeToken(token);
         storeUsername(username);
+        setCurrentUser(username)
       }else{
         alert("Credentials are invalid!")
       }
@@ -36,6 +37,7 @@ const UserForm = ({ logInOrRegister, setLogInOrRegister }) => {
         const token = response.token;
         storeToken(token);
         storeUsername(username);
+        setCurrentUser(username)
       }if(response.name === "UserExistError"){
         alert('Username is already Taken:(')
       }

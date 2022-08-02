@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import UserForm from "./UserForm";
 
-const Home = () => {
+const Home = ({currentUser, setCurrentUser}) => {
     const [logInOrRegister, setLogInOrRegister] = useState('Login')
     
   return (
     <>
     <div id="userFormContainer">
       <div className="tabcontent">
-        <UserForm logInOrRegister={logInOrRegister} setLogInOrRegister={setLogInOrRegister}/>
+        {currentUser ? <h1>Welcome back, {currentUser}</h1> : <UserForm logInOrRegister={logInOrRegister} setLogInOrRegister={setLogInOrRegister} setCurrentUser={setCurrentUser}/>}
       </div>
       </div>
     </>
