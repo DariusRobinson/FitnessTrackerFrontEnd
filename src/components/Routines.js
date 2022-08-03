@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import Test from "./Test";
 
 
-const Routines = () =>{
+const Routines = ({token}) =>{
+    const [test, setTest] = useState(false)
     return(
-        <h1>These are the routines</h1>
+        <>
+        {token && !test ? 
+        <button onClick={()=> setTest(true)}>Test me!</button> : <></>}
+
+        {test ? <><Test/> <button onClick={()=>setTest(false)}>Cancel</button></> : <p>This isn't working</p>}
+        <div>
+        jlkaklsjdlajsld;jaslkdjal'sjdkl;hasdljkfhbbsljkdhgbfljhsdbfljhbsdflhbsdljfbsdljfbsdfsdjklbfhjhb
+        jlkaklsjdlajsld;jaslkdjal'sjdkl;hasdljkfhbbsljkdhgbfljhsdbfljhbsdflhbsdljfbsdljfbsdfsdjklbfhjhb
+        jlkaklsjdlajsld;jaslkdjal'sjdkl;hasdljkfhbbsljkdhgbfljhsdbfljhbsdflhbsdljfbsdljfbsdfsdjklbfhjhb
+        jlkaklsjdlajsld;jaslkdjal'sjdkl;hasdljkfhbbsljkdhgbfljhsdbfljhbsdflhbsdljfbsdljfbsdfsdjklbfhjhb
+        jlkaklsjdlajsld;jaslkdjal'sjdkl;hasdljkfhbbsljkdhgbfljhsdbfljhbsdflhbsdljfbsdljfbsdfsdjklbfhjhb
+        jlkaklsjdlajsld;jaslkdjal'sjdkl;hasdljkfhbbsljkdhgbfljhsdbfljhbsdflhbsdljfbsdljfbsdfsdjklbfhjhb
+        jlkaklsjdlajsld;jaslkdjal'sjdkl;hasdljkfhbbsljkdhgbfljhsdbfljhbsdflhbsdljfbsdljfbsdfsdjklbfhjhb
+        jlkaklsjdlajsld;jaslkdjal'sjdkl;hasdljkfhbbsljkdhgbfljhsdbfljhbsdflhbsdljfbsdljfbsdfsdjklbfhjhb
+        jlkaklsjdlajsld;jaslkdjal'sjdkl;hasdljkfhbbsljkdhgbfljhsdbfljhbsdflhbsdljfbsdljfbsdfsdjklbfhjhb
+        jlkaklsjdlajsld;jaslkdjal'sjdkl;hasdljkfhbbsljkdhgbfljhsdbfljhbsdflhbsdljfbsdljfbsdfsdjklbfhjhb
+
+        </div>
+        </>
     )
 }
 

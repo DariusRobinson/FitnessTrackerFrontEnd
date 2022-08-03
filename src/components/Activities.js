@@ -19,7 +19,15 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
 
   return (
     <>
-      {token ? (
+      {token && !active ?  
+        <button
+        className="activityFormButton"
+        onClick={() => {
+          setActive(true);
+        }}
+      >
+        Create New Activity
+      </button> : <></>}
         <>
           {active ? (
             <>
@@ -33,20 +41,9 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
                 Cancel
               </button>
             </>
-          ) : (
-            <button
-              className="activityFormButton"
-              onClick={() => {
-                setActive(true);
-              }}
-            >
-              Create New Activity
-            </button>
-          )}
-        </>
-      ) : (
-        <></>
-      )}
+          ) : <></>
+              }</>
+      )
 
       {allActivities.map((element, index) => {
         let activityId = element.id
