@@ -58,7 +58,7 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
         <>
           {editActive == activityId ? (
             <>
-              <EditActivity allActivities={allActivities} setAllActivities={setAllActivities} setEditActive={setEditActive} token={token}/>
+              <EditActivity allActivities={allActivities} setAllActivities={setAllActivities} setEditActive={setEditActive} token={token} activityId={activityId}/>
               <button
                 className="activityFormCancelButton"
                 onClick={() => {
