@@ -3,8 +3,10 @@ import React from "react";
 
 const ActiviyForm = () => {
 
-    const handleOnSubmit = ()=>{
-        console.log('i was clicked')
+    const handleOnSubmit = (event)=>{
+        event.preventDefault()
+       
+
     }
 
     return(
