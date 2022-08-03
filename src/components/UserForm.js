@@ -1,6 +1,7 @@
 import React from "react";
 import { registerUser, loginUser} from "../api";
 import { storeUsername, storeToken } from "../auth";
+import { useNavigate } from "react-router-dom";
 
 
 const UserForm = ({ logInOrRegister, setLogInOrRegister, setCurrentUser, setToken }) => {
@@ -11,6 +12,7 @@ const UserForm = ({ logInOrRegister, setLogInOrRegister, setCurrentUser, setToke
 
     return true;
   };
+  let navigate = useNavigate()
   const handleSubmit = async (event) => {
     event.preventDefault();
     // console.log(event.target.username.value)
@@ -24,6 +26,7 @@ const UserForm = ({ logInOrRegister, setLogInOrRegister, setCurrentUser, setToke
         storeToken(token);
         storeUsername(username);
         setCurrentUser(username)
+        navigate('/profile')
       }else{
         alert("Credentials are invalid!")
       }
@@ -41,6 +44,7 @@ const UserForm = ({ logInOrRegister, setLogInOrRegister, setCurrentUser, setToke
         storeToken(token);
         storeUsername(username);
         setCurrentUser(username)
+        navigate('/profile')
       }if(response.name === "UserExistError"){
         alert('Username is already Taken:(')
       }
