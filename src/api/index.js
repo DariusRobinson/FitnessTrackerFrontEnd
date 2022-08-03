@@ -59,3 +59,42 @@ export const getAllActivities = async () => {
     console.error(error);
   }
 };
+
+export const createNewActivity = async (name, description, token) => {
+  try {
+    const response = await fetch(`${BaseURL}activities`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        name,
+        description,
+      }),
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const editActivity = async(activityId, description, token)=>{
+  try {
+    const response = await fetch(`${BaseURL}activities/${activityId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        description,
+      }),
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+}

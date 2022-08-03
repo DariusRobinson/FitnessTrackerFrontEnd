@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Home, Header, Profile, Routines, Activities } from "./";
+import { Home, Header, Profile, Routines, Activities, WrongPage } from "./";
 import { grabToken, grabUser } from "../auth";
 
 
@@ -21,6 +21,7 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/routines" element={<Routines />} />
           <Route path="/activities" element={<Activities allActivities={allActivities} setAllActivities={setAllActivities} token={token} />} />
+          <Route path='*' element={<WrongPage/>}/>
         </Routes>
       </Router>
     </>
