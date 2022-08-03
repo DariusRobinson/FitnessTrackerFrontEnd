@@ -22,7 +22,7 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
           {" "}
           {active ? (
             <>
-              <ActiviyForm />
+              <ActiviyForm allActivities={allActivities} setAllActivities={setAllActivities} setActive={setActive} token={token}/>
               <button
                 className="activityFormCancelButton"
                 onClick={() => {
