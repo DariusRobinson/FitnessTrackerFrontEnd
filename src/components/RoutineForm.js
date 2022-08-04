@@ -8,7 +8,8 @@ const RoutineForm = ({
   setCreateRoutineActive,
   token,
   allRoutines,
-  setAllRoutines
+  setAllRoutines, 
+  
 }) => {
   const [willBePublic, setWillBePublic] = useState(true);
 

@@ -1,40 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import { editRoutine } from "../api";
 
-const EditRoutine = ({name, goal, editRoutineActive, setEditRoutineActive}) => {
+const EditRoutine = ({
+  token,
+  routineId,
+  isPublic,
+  name,
+  goal,
+  editRoutineActive,
+  setEditRoutineActive,
+}) => {
+  const [routineName, setRoutineName] = useState(name);
+  const [routineGoal, setRoutineGoal] = useState(goal);
 
-const handleSubmit = (event)=>{
+  const handleSubmit = async (event) => {
     event.preventDefault();
-let name = event.target.name.value
-let goal = event.target.goal.value
-}
+    const response = await editRoutine(name, goal, isPublic, token, routineId);
+    console.log(response, "newResponse");
+  };
 
-
-    return (
-        <>
-        <form onSubmit={handleSubmit}>
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
         <input
-        type="text"
-        value={name}
-        name="name"
-        placeholder="Enter Name of Routine"
+          type="text"
+          value={routineName}
+          name="name"
+          placeholder="Enter Name of Routine"
+          onChange={(event) => {
+            setRoutineName(event.target.value);
+          }}
         ></input>
         <input
-        type="text"
-        value={goal}
-        name="goal"
-        placeholder="Enter Goal for Routine"
+          type="text"
+          value={routineGoal}
+          name="goal"
+          placeholder="Enter Goal for Routine"
+          onChange={(event) => {
+            setRoutineGoal(event.target.value);
+          }}
+        ></input>
+        <input
+          id="isPublic"
+          type="checkbox"
+          name="isPublic"
+          checked
+          onChange={(event) => {
+            setWillBePublic(!willBePublic);
+          }}
         ></input>
         <button className="EditRoutineFormButton">Save Changes</button>
-        </form>
-        </>
-    )
-}
+      </form>
+    </>
+  );
+};
 
-
-
-
-
-
-
-export default EditRoutine
+export default EditRoutine;

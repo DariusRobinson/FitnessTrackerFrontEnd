@@ -3,10 +3,13 @@ import { getAllRoutines } from "../api";
 import { RoutineForm } from "./";
 import EditRoutine from "./EditRoutine";
 
-const Routines = ({ allRoutines, setAllRoutines, token, currentUser }) => {
+const Routines = ({ allRoutines, setAllRoutines, token, currentUser, }) => {
   const [createRoutineActive, setCreateRoutineActive] = useState(false);
   const [editRoutineActive, setEditRoutineActive] = useState(null);
+  const [willBePublic, setWillBePublic] = useState(true);
 
+
+  
   const fetchRoutines = async () => {
     const routinesToDisplay = await getAllRoutines();
     setAllRoutines(routinesToDisplay);
@@ -87,7 +90,10 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser }) => {
                     editRoutineActive={editRoutineActive}
                     setEditRoutineActive={setEditRoutineActive}
                     name={element.name}
-                    description={element.goal}
+                    goal={element.goal}
+                    token={token}
+                    isPublic={isPublic}
+                    routineId={routineId}
                   />
                   <button className="cancelEditRoutine" onClick={()=>{
                     setEditRoutineActive(null)
