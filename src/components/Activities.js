@@ -62,7 +62,7 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
             <p className="activityDescription">{element.description}</p>
             {token ? (
               <>
-                {editActive == activityId ? (
+                {editActive === activityId ? (
                   <>
                     <EditActivity
                       allActivities={allActivities}
@@ -85,7 +85,7 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
                     className="activityFormButton"
                     value={activityId}
                     onClick={(event) => {
-                      setEditActive(event.target.value);
+                      setEditActive(Number(event.target.value));
                     }}
                   >
                     Edit Activity

@@ -5,6 +5,7 @@ import EditRoutine from "./EditRoutine";
 
 const Routines = ({ allRoutines, setAllRoutines, token, currentUser }) => {
   const [createRoutineActive, setCreateRoutineActive] = useState(false);
+  const [editRoutineActive, setEditRoutineActive] = useState(null);
 
   const fetchRoutines = async () => {
     const routinesToDisplay = await getAllRoutines();
@@ -45,7 +46,9 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser }) => {
       )}
       <div>
         {allRoutines.map((element, index) => {
-          console.log("made it in the outter map");
+          let routineId = element.id;
+          let creatorName = element.creatorName;
+
           return (
             <div key={index} className="routines">
               <p className="routineCreator">{`Created By: ${element.creatorName}`}</p>
@@ -53,7 +56,6 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser }) => {
               <p className="routineGoal">{`Goal: ${element.goal}`}</p>
               {element.activities ? (
                 element.activities.map((activity, activityIdx) => {
-                  console.log("made it in the inner map");
                   return (
                     <Fragment key={activityIdx}>
                       <p className="">{`Activity: ${activity.name}`}</p>
@@ -66,10 +68,34 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser }) => {
               ) : (
                 <></>
               )}
-              <button onClick={() => {
-                <EditRoutine name={element.name} description={element.goal} />
-              }}></button>
-              <br></br>
+              {token && !editRoutineActive && creatorName === currentUser ? (
+                <button
+                  onClick={() => {
+                    console.log(routineId, "routine id");
+                    setEditRoutineActive(routineId);
+                  }}
+                >
+                  Edit Routine
+                </button>
+              ) : (
+                <></>
+              )}
+
+              {editRoutineActive === routineId ? (
+                <Fragment>
+                  <EditRoutine
+                    editRoutineActive={editRoutineActive}
+                    setEditRoutineActive={setEditRoutineActive}
+                    name={element.name}
+                    description={element.goal}
+                  />
+                  <button className="cancelEditRoutine" onClick={()=>{
+                    setEditRoutineActive(null)
+                  }}>Cancel</button>
+                </Fragment>
+              ) : (
+                <></>
+              )}
             </div>
           );
         })}
