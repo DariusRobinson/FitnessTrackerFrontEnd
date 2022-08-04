@@ -113,9 +113,9 @@ export const getAllRoutines = async () => {
   }
 };
 
-export const createRoutine = async (name, goal, isPublic) =>{
+export const createRoutine = async (name, goal, isPublic, token) => {
   try {
-    const response = await fetch(`${BaseURL}activities`, {
+    const response = await fetch(`${BaseURL}routines`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -127,9 +127,10 @@ export const createRoutine = async (name, goal, isPublic) =>{
         isPublic,
       }),
     });
-    result = await response.json();
-    return result
+    const result = await response.json();
+    console.log(result, "this is result");
+    return result;
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
-}
+};

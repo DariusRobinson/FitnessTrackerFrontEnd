@@ -19,34 +19,43 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
 
   return (
     <>
-      {token && !active ?  
+      {token && !active ? (
         <button
-        className="activityFormButton"
-        onClick={() => {
-          setActive(true);
-        }}
-      >
-        Create New Activity
-      </button> : <></>}
-        <>
-          {active ? (
-            <>
-              <ActiviyForm allActivities={allActivities} setAllActivities={setAllActivities} setActive={setActive} token={token}/>
-              <button
-                className="activityFormCancelButton"
-                onClick={() => {
-                  setActive(false);
-                }}
-              >
-                Cancel
-              </button>
-            </>
-          ) : <></>
-              }</>
-      
+          className="activityFormButton"
+          onClick={() => {
+            setActive(true);
+          }}
+        >
+          Create New Activity
+        </button>
+      ) : (
+        <></>
+      )}
+      <>
+        {active ? (
+          <>
+            <ActiviyForm
+              allActivities={allActivities}
+              setAllActivities={setAllActivities}
+              setActive={setActive}
+              token={token}
+            />
+            <button
+              className="activityFormCancelButton"
+              onClick={() => {
+                setActive(false);
+              }}
+            >
+              Cancel
+            </button>
+          </>
+        ) : (
+          <></>
+        )}
+      </>
 
       {allActivities.map((element, index) => {
-        let activityId = element.id
+        let activityId = element.id;
         return (
           <div key={index} className="activities">
             <h4 className="activityName">{element.name}</h4>
@@ -55,7 +64,13 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
               <>
                 {editActive == activityId ? (
                   <>
-              <EditActivity allActivities={allActivities} setAllActivities={setAllActivities} setEditActive={setEditActive} token={token} activityId={activityId}/>
+                    <EditActivity
+                      allActivities={allActivities}
+                      setAllActivities={setAllActivities}
+                      setEditActive={setEditActive}
+                      token={token}
+                      activityId={activityId}
+                    />
                     <button
                       className="activityFormCancelButton"
                       onClick={() => {

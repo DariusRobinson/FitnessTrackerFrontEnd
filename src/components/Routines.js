@@ -1,13 +1,9 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { getAllRoutines } from "../api";
-import {RoutineForm} from "./";
+import { RoutineForm } from "./";
 
-const Routines = ({
-  allRoutines,
-  setAllRoutines,
-  token
-}) => {
-const [createRoutineActive, setCreateRoutineActive] = useState(false);
+const Routines = ({ allRoutines, setAllRoutines, token, currentUser }) => {
+  const [createRoutineActive, setCreateRoutineActive] = useState(false);
 
   const fetchRoutines = async () => {
     const routinesToDisplay = await getAllRoutines();
@@ -20,37 +16,55 @@ const [createRoutineActive, setCreateRoutineActive] = useState(false);
   }, []);
   return (
     <>
-      {token && !createRoutineActive? (
+      {token && !createRoutineActive ? (
         <button
           className="createRoutine"
           onClick={() => {
-            console.log("i was clicked")
+            console.log("i was clicked");
             setCreateRoutineActive(true);
-          }}>
+          }}
+        >
           Create Routine
         </button>
-      ) : <></>}
+      ) : (
+        <></>
+      )}
 
-      {createRoutineActive ?  
-      <RoutineForm createRoutineActive={createRoutineActive} setCreateRoutineActive={setCreateRoutineActive} />
-      : <></>}
+      {createRoutineActive ? (
+        <RoutineForm
+          currentUser={currentUser}
+          createRoutineActive={createRoutineActive}
+          setCreateRoutineActive={setCreateRoutineActive}
+          token={token}
+          allRoutines={allRoutines}
+          setAllRoutines={setAllRoutines}
+        />
+      ) : (
+        <></>
+      )}
       <div>
         {allRoutines.map((element, index) => {
+          console.log("made it in the outter map");
           return (
             <div key={index} className="routines">
               <p className="routineCreator">{`Created By: ${element.creatorName}`}</p>
               <p className="routineName">{`Routine: ${element.name}`}</p>
               <p className="routineGoal">{`Goal: ${element.goal}`}</p>
-              {element.activities.map((activity, activityIdx) => {
-                return (
-                  <Fragment key={activityIdx}>
-                    <p className="">{`Activity: ${activity.name}`}</p>
-                    <p className="">{`Activity Description :${activity.description}`}</p>
-                    <p className="">{`Reps:${activity.count}`}</p>
-                    <p className="">{`Duration: ${activity.duration} interval of time that you feel the burn!`}</p>
-                  </Fragment>
-                );
-              })}
+              {element.activities ? (
+                element.activities.map((activity, activityIdx) => {
+                  console.log("made it in the inner map");
+                  return (
+                    <Fragment key={activityIdx}>
+                      <p className="">{`Activity: ${activity.name}`}</p>
+                      <p className="">{`Activity Description :${activity.description}`}</p>
+                      <p className="">{`Reps:${activity.count}`}</p>
+                      <p className="">{`Duration: ${activity.duration} interval of time that you feel the burn!`}</p>
+                    </Fragment>
+                  );
+                })
+              ) : (
+                <></>
+              )}
               <br></br>
             </div>
           );

@@ -1,16 +1,41 @@
 import React, { useState } from "react";
 import { createRoutine } from "../api";
+import { clearUsernameAndToken } from "../auth";
 
-const RoutineForm = ({createRoutineActive, setCreateRoutineActive}) => {
-const [willBePublic, setWillBePublic] = useState(false);
+const RoutineForm = ({
+  currentUser,
+  createRoutineActive,
+  setCreateRoutineActive,
+  token,
+  allRoutines,
+  setAllRoutines
+}) => {
+  const [willBePublic, setWillBePublic] = useState(true);
 
-const handleSubmit = async (event) => {
-  event.preventDefault();
-  let name = event.target.name.value;
-  let goal = event.target.goal.value;
-   isPublic = willBePublic;
-   const response = await createRoutine(name, goal, isPublic);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    let name = event.target.name.value;
+    let goal = event.target.goal.value;
+    let isPublic = willBePublic;
+    const response = await createRoutine(name, goal, isPublic, token);
+    if(response.message === 'duplicate key value violates unique constraint "routines_name_key"'){
+      return alert('Routine Already Exists')
+    }
+
+      response.creatorName = currentUser;
+
+
+
+    //make a copy of the array of routines then push the new routine we created on the copy and instantly render it without refreshing the page...
+      const routinestoDisplay = [...allRoutines, response]
+      console.log(routinestoDisplay,"ROUTINES TO DISPLAY")
+      console.log(allRoutines, "ALL ROUTINES")
+      setAllRoutines(routinestoDisplay);
+      setCreateRoutineActive(false)
   };
+
+
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -27,21 +52,30 @@ const handleSubmit = async (event) => {
           type="text"
           required
           name="goal"
-          placeholder="Enter Description"
+          placeholder="Enter Your Goal"
         ></input>
         <input
           id="isPublic"
           type="checkbox"
           name="isPublic"
+          checked
           onChange={(event) => {
-            setWillBePublic(false);
-            console.log(checked)
+            setWillBePublic(!willBePublic);
           }}
         ></input>
-        <button className="activityFormButton">Create Routine</button>
+        <button type="submit" className="activityFormButton">
+          Create Routine
+        </button>
       </form>
+      <button
+        className="routineCancelButton"
+        onClick={() => {
+          setCreateRoutineActive(false);
+        }}
+      >
+        Cancel
+      </button>
     </>
   );
-
 };
 export default RoutineForm;
