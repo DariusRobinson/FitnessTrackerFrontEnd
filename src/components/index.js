@@ -6,6 +6,7 @@ export {default as Activities } from "./Activities"
 export {default as Routines } from "./Routines"
 export {default as Logout } from "./Logout"
 export {default as WrongPage} from './WrongPage'
+export {default as RoutineForm} from './RoutineForm'
 
 
 

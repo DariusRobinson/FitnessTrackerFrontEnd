@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createRoutine } from "../api";
 
-const RoutineForm = () => {
+const RoutineForm = ({createRoutineActive, setCreateRoutineActive}) => {
 const [willBePublic, setWillBePublic] = useState(false);
 
 const handleSubmit = async (event) => {
@@ -9,10 +9,11 @@ const handleSubmit = async (event) => {
   let name = event.target.name.value;
   let goal = event.target.goal.value;
    isPublic = willBePublic;
-  const response = await createRoutine(name, goal, isPublic);
+   const response = await createRoutine(name, goal, isPublic);
+  };
   return (
-    <>Hello Wolrd
-      {/* <form onSubmit={handleSubmit}>
+    <>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="createNewRoutine"></label>
         <input
           id="routineTextBox"
@@ -33,13 +34,14 @@ const handleSubmit = async (event) => {
           type="checkbox"
           name="isPublic"
           onChange={(event) => {
-            setWillBePublic(true);
+            setWillBePublic(false);
+            console.log(checked)
           }}
         ></input>
         <button className="activityFormButton">Create Routine</button>
-      </form> */}
+      </form>
     </>
   );
-};
+
 };
 export default RoutineForm;

@@ -23,13 +23,14 @@ const ActiviyForm = ({ allActivities, setAllActivities, setActive, token }) => {
   return (
     <>
       <form onSubmit={handleOnSubmit}>
-        <label htmlFor="createNewActivity"></label>
+        <label htmlFor="activityName">Name:</label>
         <input
           type="text"
           required
           name="name"
           placeholder="Enter Name"
         ></input>
+        <label htmlFor="activityDescription">Description:</label>
         <input
           type="text"
           required

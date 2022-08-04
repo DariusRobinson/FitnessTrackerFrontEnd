@@ -1,17 +1,17 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { getAllRoutines } from "../api";
-import RoutineForm from "./RoutineForm";
+import {RoutineForm} from "./";
 
 const Routines = ({
   allRoutines,
   setAllRoutines,
-  token,
-  createRoutineActive,
-  setCreateRoutineActive,
+  token
 }) => {
+const [createRoutineActive, setCreateRoutineActive] = useState(false);
+
   const fetchRoutines = async () => {
-    allRoutines = await getAllRoutines();
-    setAllRoutines(allRoutines);
+    const routinesToDisplay = await getAllRoutines();
+    setAllRoutines(routinesToDisplay);
     console.log(allRoutines);
   };
 
@@ -26,14 +26,14 @@ const Routines = ({
           onClick={() => {
             console.log("i was clicked")
             setCreateRoutineActive(true);
-          }}
-        >
+          }}>
           Create Routine
         </button>
       ) : <></>}
+
       {createRoutineActive ?  
       <RoutineForm createRoutineActive={createRoutineActive} setCreateRoutineActive={setCreateRoutineActive} />
-      : <h1>hello world</h1>}
+      : <></>}
       <div>
         {allRoutines.map((element, index) => {
           return (
@@ -51,7 +51,7 @@ const Routines = ({
                   </Fragment>
                 );
               })}
-              ,
+              <br></br>
             </div>
           );
         })}

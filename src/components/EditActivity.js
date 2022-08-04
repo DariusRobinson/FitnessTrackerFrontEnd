@@ -1,10 +1,8 @@
 import React from "react";
 import { editActivity } from "../api";
-import { useNavigate } from "react-router-dom";
 
 
 const EditActivity = ({ allActivities, setAllActivities, setEditActive, token, activityId }) => {
-    let navigate = useNavigate()
   const handleOnSubmit = async (event) => {
     event.preventDefault();
     let description = event.target.description.value;

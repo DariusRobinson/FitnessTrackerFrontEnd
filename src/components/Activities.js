@@ -43,7 +43,7 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
             </>
           ) : <></>
               }</>
-      )
+      
 
       {allActivities.map((element, index) => {
         let activityId = element.id
