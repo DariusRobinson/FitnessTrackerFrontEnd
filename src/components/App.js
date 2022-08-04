@@ -13,15 +13,17 @@ const App = () => {
   return (
     <>
       <Router>
-        <header>
+        {/* <header>
           <Header setToken={setToken} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
-        </header>
+        </header> */}
 
         <Routes>
-          <Route exact path="/" element={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} setToken={setToken}/>} />
+          <Route exact path="/" element={<Header setToken={setToken} currentUser={currentUser} setCurrentUser={setCurrentUser}/>}>
+            <Route index element={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} setToken={setToken}/>}/>
           <Route path="/profile" element={<Profile />} />
           <Route path="/routines" element={<Routines token={token} allRoutines={allRoutines} setAllRoutines={setAllRoutines} />} />
           <Route path="/activities" element={<Activities allActivities={allActivities} setAllActivities={setAllActivities} token={token} />} />
+          </Route>
           <Route path='*' element={<WrongPage/>}/>
         </Routes>
       </Router>
