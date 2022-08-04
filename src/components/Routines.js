@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { getAllRoutines } from "../api";
 import { RoutineForm } from "./";
+import EditRoutine from "./EditRoutine";
 
 const Routines = ({ allRoutines, setAllRoutines, token, currentUser }) => {
   const [createRoutineActive, setCreateRoutineActive] = useState(false);
@@ -65,6 +66,9 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser }) => {
               ) : (
                 <></>
               )}
+              <button onClick={() => {
+                <EditRoutine name={element.name} description={element.goal} />
+              }}></button>
               <br></br>
             </div>
           );

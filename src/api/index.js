@@ -128,7 +128,28 @@ export const createRoutine = async (name, goal, isPublic, token) => {
       }),
     });
     const result = await response.json();
-    console.log(result, "this is result");
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const editRoutine = async (name, goal, isPublic, token) => {
+  try {
+    const response = await fetch(`${BaseURL}routines/:routineId`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        name,
+        goal,
+        isPublic,
+      }),
+    });
+    const result = await response.json();
+    console.log(result, "new Result");
     return result;
   } catch (error) {
     console.error(error);
