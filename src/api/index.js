@@ -155,3 +155,20 @@ export const editRoutine = async (name, goal, isPublic, token, routineId) => {
     console.error(error);
   }
 };
+
+export const deleteRoutine = async (token, routineId) => {
+try {
+  const response = await fetch(`${BaseURL}routines/${routineId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    })
+  ;
+  const result = await response.json();
+  return result
+} catch (error) {
+  console.error(error)
+}
+}

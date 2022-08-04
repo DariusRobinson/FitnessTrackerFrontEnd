@@ -1,12 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { getAllRoutines } from "../api";
 import { RoutineForm } from "./";
+import DeleteRoutine from "./DeleteRoutine";
 import EditRoutine from "./EditRoutine";
 
 const Routines = ({ allRoutines, setAllRoutines, token, currentUser, }) => {
   const [createRoutineActive, setCreateRoutineActive] = useState(false);
   const [editRoutineActive, setEditRoutineActive] = useState(null);
-  const [willBePublic, setWillBePublic] = useState(true);
+  
 
 
   
@@ -72,6 +73,7 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, }) => {
                 <></>
               )}
               {token && !editRoutineActive && creatorName === currentUser ? (
+                <Fragment>
                 <button
                   onClick={() => {
                     console.log(routineId, "routine id");
@@ -80,6 +82,8 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, }) => {
                 >
                   Edit Routine
                 </button>
+                <DeleteRoutine token={token} routineId={routineId} allRoutines={allRoutines} setAllRoutines={setAllRoutines} />
+                </Fragment>
               ) : (
                 <></>
               )}
@@ -92,8 +96,9 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, }) => {
                     name={element.name}
                     goal={element.goal}
                     token={token}
-                    isPublic={isPublic}
                     routineId={routineId}
+                    allRoutines={allRoutines}
+                    setAllRoutines={setAllRoutines}
                   />
                   <button className="cancelEditRoutine" onClick={()=>{
                     setEditRoutineActive(null)

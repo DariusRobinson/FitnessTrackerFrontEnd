@@ -1,22 +1,40 @@
 import React, { useState } from "react";
-import { editRoutine } from "../api";
+import { editRoutine, getAllRoutines } from "../api";
 
 const EditRoutine = ({
   token,
   routineId,
-  isPublic,
   name,
   goal,
   editRoutineActive,
   setEditRoutineActive,
+  allRoutines,
+  setAllRoutines,
 }) => {
   const [routineName, setRoutineName] = useState(name);
   const [routineGoal, setRoutineGoal] = useState(goal);
+  const [isPublic, setIsPublic] = useState(true);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await editRoutine(name, goal, isPublic, token, routineId);
+    const response = await editRoutine(
+      routineName,
+      routineGoal,
+      isPublic,
+      token,
+      routineId
+    );
+    console.log(name);
     console.log(response, "newResponse");
+    setEditRoutineActive(null);
+
+    let editedRoutines = [...allRoutines];
+    editedRoutines.forEach((element, index) => {
+      if (element.id === routineId) {
+        editedRoutines.splice(index, 1, response);
+      }
+    });
+    setAllRoutines(editedRoutines);
   };
 
   return (
@@ -38,6 +56,7 @@ const EditRoutine = ({
           placeholder="Enter Goal for Routine"
           onChange={(event) => {
             setRoutineGoal(event.target.value);
+            console.log(routineGoal, "goal");
           }}
         ></input>
         <input
@@ -46,7 +65,7 @@ const EditRoutine = ({
           name="isPublic"
           checked
           onChange={(event) => {
-            setWillBePublic(!willBePublic);
+            setIsPublic(!isPublic);
           }}
         ></input>
         <button className="EditRoutineFormButton">Save Changes</button>
