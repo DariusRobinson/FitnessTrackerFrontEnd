@@ -11,7 +11,7 @@ const RoutineForm = ({
   setAllRoutines, 
   
 }) => {
-  const [willBePublic, setWillBePublic] = useState(true);
+  const [willBePublic, setWillBePublic] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -59,9 +59,9 @@ const RoutineForm = ({
           id="isPublic"
           type="checkbox"
           name="isPublic"
-          checked
           onChange={(event) => {
             setWillBePublic(!willBePublic);
+            console.log(willBePublic)
           }}
         ></input>
         <button type="submit" className="activityFormButton">

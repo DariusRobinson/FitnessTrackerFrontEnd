@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { getAllRoutines } from "../api";
 import { RoutineForm } from "./";
 import DeleteRoutine from "./DeleteRoutine";
@@ -55,7 +56,7 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, }) => {
 
           return (
             <div key={index} className="routines">
-              <p className="routineCreator">{`Created By: ${element.creatorName}`}</p>
+              <p className="routineCreator">Created By: <NavLink to={`/routines/${creatorName}`}>{creatorName}</NavLink></p>
               <p className="routineName">{`Routine: ${element.name}`}</p>
               <p className="routineGoal">{`Goal: ${element.goal}`}</p>
               {element.activities ? (
@@ -99,6 +100,7 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, }) => {
                     routineId={routineId}
                     allRoutines={allRoutines}
                     setAllRoutines={setAllRoutines}
+                    currentUser={currentUser}
                   />
                   <button className="cancelEditRoutine" onClick={()=>{
                     setEditRoutineActive(null)

@@ -46,6 +46,21 @@ export const loginUser = async (username, password) => {
   }
 };
 
+export const getUserInfo = async (token) => {
+  try {
+    const response = await fetch(`${BaseURL}users/me`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export const getAllActivities = async () => {
   try {
     const response = await fetch(`${BaseURL}activities`, {
@@ -171,4 +186,32 @@ try {
 } catch (error) {
   console.error(error)
 }
+}
+
+export const getPublicRoutinesByUser = async ( token, username) =>{
+  try {
+    if(token){
+      const response = await fetch(`${BaseURL}users/${username}/routines`, {
+        headers: {
+          "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+        },
+      });
+      const result = await response.json();
+      console.log(result, 'hopefully no promise pending!')
+      return result;
+    }
+    const response = await fetch(`${BaseURL}users/${username}/routines`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const result = await response.json();
+    console.log(result, 'hopefully no promise pending!')
+    return result;
+
+
+  } catch (error) {
+    console.error(error)
+  }
 }

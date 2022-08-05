@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { editRoutine, getAllRoutines } from "../api";
 
 const EditRoutine = ({
+  currentUser,
   token,
   routineId,
   name,
@@ -10,6 +11,7 @@ const EditRoutine = ({
   setEditRoutineActive,
   allRoutines,
   setAllRoutines,
+  myRoutines, setMyRoutines
 }) => {
   const [routineName, setRoutineName] = useState(name);
   const [routineGoal, setRoutineGoal] = useState(goal);
@@ -24,18 +26,36 @@ const EditRoutine = ({
       token,
       routineId
     );
-    console.log(name);
-    console.log(response, "newResponse");
-    setEditRoutineActive(null);
+    response.creatorName = currentUser;
 
-    let editedRoutines = [...allRoutines];
+    if(response.message === 'duplicate key value violates unique constraint "routines_name_key"'){
+
+      setEditRoutineActive(null);
+      return alert('Routine Already Exists')
+
+    }
+
+    if(myRoutines){
+      const editedRoutines = [...myRoutines];
+      editedRoutines.forEach((element, index) => {
+        if (element.id === routineId) {
+          editedRoutines.splice(index, 1, response);
+        }
+      });
+      setMyRoutines(editedRoutines);
+      setEditRoutineActive(null);
+      }else{
+
+    const editedRoutines = [...allRoutines];
     editedRoutines.forEach((element, index) => {
       if (element.id === routineId) {
         editedRoutines.splice(index, 1, response);
       }
     });
     setAllRoutines(editedRoutines);
-  };
+    setEditRoutineActive(null);
+
+  };}
 
   return (
     <>

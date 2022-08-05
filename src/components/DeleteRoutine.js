@@ -3,26 +3,32 @@ import { deleteRoutine } from "../api";
 
 
 
-const DeleteRoutine = ({token, routineId, allRoutines, setAllRoutines})=>{
+const DeleteRoutine = ({token, routineId, allRoutines, setAllRoutines, myRoutines, setMyRoutines})=>{
 
 const handleOnClick = async (event) => {
 event.preventDefault();
 
-const response = await deleteRoutine(token, routineId)
-console.log(response)
+if(myRoutines){
+await deleteRoutine(token, routineId)
 
-
-
-let deletedRoutine = [...allRoutines];
+let deletedRoutine = [...myRoutines];
 deletedRoutine.forEach((element, index) => {
   if (element.id === routineId) {
     deletedRoutine.splice(index, 1);
   }
 });
-setAllRoutines(deletedRoutine);
-
-
-
+setMyRoutines(deletedRoutine);
+}else{
+  
+  await deleteRoutine(token, routineId)
+  let deletedRoutine = [...allRoutines];
+  deletedRoutine.forEach((element, index) => {
+    if (element.id === routineId) {
+      deletedRoutine.splice(index, 1);
+    }
+  });
+  setAllRoutines(deletedRoutine);
+}
 }
 
 
