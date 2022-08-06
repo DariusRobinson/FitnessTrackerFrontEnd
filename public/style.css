@@ -19,6 +19,18 @@ html, body {
     height: 250px;
     width: 400px;
 }
+
+.routines{
+  border: black 2px solid;
+}
+
+
+
+
+
+
+
+
 .tab button {
     background-color: inherit;
     float: left;

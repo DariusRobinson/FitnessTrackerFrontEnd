@@ -8,35 +8,38 @@ const ActiviyForm = ({ allActivities, setAllActivities, setActive, token }) => {
     let description = event.target.description.value;
     const response = await createNewActivity(name, description, token);
     console.log(response, "this is response");
-    if(response.name === 'ActivityAlreadyMade' && response.error){
-      setActive(false)
-      return alert('Activity already exists')
+    if (response.name === "ActivityAlreadyMade" && response.error) {
+      setActive(false);
+      return alert("Activity already exists");
     }
 
-    const activitiestoDisplay = [...allActivities, response]
+    const activitiestoDisplay = [...allActivities, response];
     // console.log(activitiestoDisplay, "this is what we want to have");
     // console.log(allActivities, "this is what was copied");
     setAllActivities(activitiestoDisplay);
-    setActive(false)
+    setActive(false);
   };
 
   return (
     <>
       <form onSubmit={handleOnSubmit}>
-        <label htmlFor="createNewActivity"></label>
+        <label htmlFor="activityName">Name:</label>
         <input
           type="text"
           required
           name="name"
           placeholder="Enter Name"
         ></input>
+        <label htmlFor="activityDescription">Description:</label>
         <input
           type="text"
           required
           name="description"
           placeholder="Enter Description"
         ></input>
-        <button className="activityFormButton">Create Activity</button>
+        <button type="submit" className="activityFormButton">
+          Create Activity
+        </button>
       </form>
     </>
   );
