@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { getAllActivities } from "../api";
 import ActiviyForm from "./ActivityForm";
 import EditActivity from "./EditActivity";
 
@@ -7,15 +6,7 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
   const [active, setActive] = useState(false);
   const [editActive, setEditActive] = useState(null);
 
-  const fetchActivities = async () => {
-    const activityList = await getAllActivities();
-    console.log(activityList, "this is the activity list");
-    setAllActivities(activityList);
-  };
 
-  useEffect(() => {
-    fetchActivities();
-  }, []);
 
   return (
     <>
