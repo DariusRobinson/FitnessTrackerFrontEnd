@@ -61,7 +61,7 @@ if(myRoutines){
     return(
         <>
         <form onSubmit={handleSubmit}>
-        <select defaultValue='' data-activitydescription='' name="activityList">
+        <select defaultValue='' name="activityList">
             <option value='' disabled >Choose an activity</option>
             {allActivities.map((element, idx)=>{
                 let activityName = element.name
@@ -75,14 +75,14 @@ if(myRoutines){
             <label htmlFor="createNewRoutine"></label>
         <input
           id="activityCount"
-          type="text"
+          type="number"
           required
           name="count"
           placeholder="Enter count"
         ></input>
         <input
           id="activityDurtation"
-          type="text"
+          type="number"
           required
           name="duration"
           placeholder="Enter duration"

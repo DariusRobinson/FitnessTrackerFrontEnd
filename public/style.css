@@ -1,12 +1,12 @@
 html, body {
     margin:0px;
     height:100%;
-    
-      background: url(https://media.giphy.com/media/26BRq9PYFLeJl3WLu/giphy.gif) no-repeat center center fixed; 
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
+    background: url(https://media.giphy.com/media/26BRq9PYFLeJl3WLu/giphy.gif) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 940px 775px;
+    background-color: #bfc3c9;
 
       
     
