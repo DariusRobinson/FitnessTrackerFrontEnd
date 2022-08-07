@@ -39,7 +39,7 @@ const RoutineForm = ({
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="routineForm" onSubmit={handleSubmit}>
         <label htmlFor="createNewRoutine"></label>
         <input
           id="routineTextBox"
@@ -56,6 +56,7 @@ const RoutineForm = ({
           placeholder="Enter Your Goal"
         ></input>
         <input
+        className="checkbox"
           id="isPublic"
           type="checkbox"
           name="isPublic"
@@ -69,7 +70,7 @@ const RoutineForm = ({
         </button>
       </form>
       <button
-        className="routineCancelButton"
+        className="cancelButton"
         onClick={() => {
           setCreateRoutineActive(false);
         }}

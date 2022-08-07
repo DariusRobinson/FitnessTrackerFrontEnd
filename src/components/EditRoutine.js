@@ -59,7 +59,7 @@ const EditRoutine = ({
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <input
           type="text"
           value={routineName}
@@ -80,6 +80,7 @@ const EditRoutine = ({
           }}
         ></input>
         <input
+        className="checkbox"
           id="isPublic"
           type="checkbox"
           name="isPublic"

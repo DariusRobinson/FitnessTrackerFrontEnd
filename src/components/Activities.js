@@ -41,7 +41,7 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
               token={token}
             />
             <button
-              className="activityFormCancelButton"
+              className="cancelButton"
               onClick={() => {
                 setActive(false);
               }}
@@ -72,7 +72,7 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
                       activityId={activityId}
                     />
                     <button
-                      className="activityFormCancelButton"
+                      className="cancelButton"
                       onClick={() => {
                         setEditActive(null);
                       }}

@@ -7,7 +7,8 @@ html, body {
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
-
+      background-size: 940px 775px;
+      background-color: #bfc3c9;
       
     
   }
@@ -95,4 +96,31 @@ html, body {
   @keyframes type{
     from{box-shadow: inset -3px 0px 0px #888;}
     to{box-shadow: inset -3px 0px 0px transparent;}
+  }
+  button {
+    border: solid black 1px;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px;
+  }
+
+  .cancelButton {
+    background-color: #ff3334;
+    color: white;
+  }
+
+  .checkbox {
+    margin-left: 5px;
+  }
+  
+  .form {
+    border: solid;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 5px;
+    background-color: #ff19d9a6;
+    color: white;
+    box-shadow: 0 5px 10px 2px black;
   }
