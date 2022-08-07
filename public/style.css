@@ -1,6 +1,7 @@
 html, body {
     margin:0px;
     height:100%;
+cssBranch
     
       background: url(https://media.giphy.com/media/26BRq9PYFLeJl3WLu/giphy.gif) no-repeat center center fixed; 
       -webkit-background-size: cover;
@@ -9,6 +10,10 @@ html, body {
       background-size: cover;
       background-size: 940px 775px;
       background-color: #bfc3c9;
+
+  
+
+main
       
     
   }

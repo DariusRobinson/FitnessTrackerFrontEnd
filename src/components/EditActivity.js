@@ -11,9 +11,9 @@ const EditActivity = ({
   const handleOnSubmit = async (event) => {
     event.preventDefault();
     let description = event.target.description.value;
-    // let name = event.target.name.value;
+    let name = event.target.name.value;
 
-    const response = await editActivity(activityId, description, token);
+    const response = await editActivity(activityId, name, description, token);
     console.log(response, "this is response");
 
     const activitiestoDisplay = [...allActivities];
@@ -30,12 +30,12 @@ const EditActivity = ({
   return (
     <>
       <form onSubmit={handleOnSubmit}>
-        {/* <input
+        <input
           type="text"
           required
           name="name"
           placeholder="Enter Name"
-        ></input> */}
+        ></input>
         <input
           type="text"
           required

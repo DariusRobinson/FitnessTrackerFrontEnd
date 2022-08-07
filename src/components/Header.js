@@ -6,8 +6,8 @@ import {Logout} from "./";
 const Header = ({setCurrentUser, currentUser, setToken}) =>{
     return(
       <>
-        <header>
-        <NavLink to="/profile">Profile</NavLink>
+      <header>
+          {  currentUser ?  <NavLink to="/profile">Profile</NavLink>  :  <></>}
         <NavLink to="/">Home</NavLink>
         <NavLink to="/routines">Routines</NavLink>
         <NavLink to="/activities">Activities</NavLink>

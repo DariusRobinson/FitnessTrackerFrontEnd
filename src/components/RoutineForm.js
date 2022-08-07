@@ -55,6 +55,7 @@ const RoutineForm = ({
           name="goal"
           placeholder="Enter Your Goal"
         ></input>
+        <label htmlFor="isPublic">  Is public?</label>
         <input
         className="checkbox"
           id="isPublic"
@@ -62,7 +63,6 @@ const RoutineForm = ({
           name="isPublic"
           onChange={(event) => {
             setWillBePublic(!willBePublic);
-            console.log(willBePublic)
           }}
         ></input>
         <button type="submit" className="activityFormButton">

@@ -39,6 +39,9 @@ const EditRoutine = ({
       const editedRoutines = [...myRoutines];
       editedRoutines.forEach((element, index) => {
         if (element.id === routineId) {
+          if(element.activities){
+            response.activities = element.activities
+          }
           editedRoutines.splice(index, 1, response);
         }
       });
@@ -49,6 +52,9 @@ const EditRoutine = ({
     const editedRoutines = [...allRoutines];
     editedRoutines.forEach((element, index) => {
       if (element.id === routineId) {
+        if(element.activities){
+          response.activities = element.activities
+        }
         editedRoutines.splice(index, 1, response);
       }
     });
@@ -64,6 +70,7 @@ const EditRoutine = ({
           type="text"
           value={routineName}
           name="name"
+          required
           placeholder="Enter Name of Routine"
           onChange={(event) => {
             setRoutineName(event.target.value);
@@ -73,12 +80,14 @@ const EditRoutine = ({
           type="text"
           value={routineGoal}
           name="goal"
+          required
           placeholder="Enter Goal for Routine"
           onChange={(event) => {
             setRoutineGoal(event.target.value);
             console.log(routineGoal, "goal");
           }}
         ></input>
+        <label htmlFor="isPublic">Is public?</label>
         <input
         className="checkbox"
           id="isPublic"

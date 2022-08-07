@@ -95,7 +95,7 @@ export const createNewActivity = async (name, description, token) => {
   }
 };
 
-export const editActivity = async (activityId, description, token) => {
+export const editActivity = async (activityId, name, description, token) => {
   try {
     const response = await fetch(`${BaseURL}activities/${activityId}`, {
       method: "PATCH",
@@ -104,6 +104,7 @@ export const editActivity = async (activityId, description, token) => {
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
+        name,
         description,
       }),
     });
@@ -215,3 +216,63 @@ export const getPublicRoutinesByUser = async ( token, username) =>{
     console.error(error)
   }
 }
+
+export const addActivitytoRoutine = async (routineId, activityId, count, duration) => {
+  try {
+    const response = await fetch(`${BaseURL}routines/${routineId}/activities`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+      routineId,
+      activityId,
+      count,
+      duration,
+      }),
+    });
+    const result = await response.json();
+    console.log(result, "new Result");
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const editActivityOnRoutine = async ( routineActivityId, count, duration, token) => {
+  try {
+    const response = await fetch(`${BaseURL}routine_activities/${routineActivityId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+      count,
+      duration,
+      }),
+    });
+    const result = await response.json();
+    console.log(result, "new Result");
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const deleteActivityOnRoutine = async (routineActivityId, token) => {
+  try {
+    const response = await fetch(`${BaseURL}routine_activities/${routineActivityId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+      },
+    });
+    const result = await response.json();
+    console.log(result, "new Result");
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
