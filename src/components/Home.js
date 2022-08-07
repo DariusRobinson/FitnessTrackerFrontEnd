@@ -8,7 +8,7 @@ const Home = ({currentUser, setCurrentUser, setToken}) => {
     <>
     <div id="userFormContainer">
       <div className="tabcontent">
-        {currentUser ? <h1>Welcome back, {currentUser}</h1> : <UserForm logInOrRegister={logInOrRegister} setLogInOrRegister={setLogInOrRegister} setCurrentUser={setCurrentUser} setToken={setToken}/>}
+        {currentUser ? <h1 className="homepage">Welcome back, {currentUser}</h1> : <UserForm logInOrRegister={logInOrRegister} setLogInOrRegister={setLogInOrRegister} setCurrentUser={setCurrentUser} setToken={setToken}/>}
       </div>
       </div>
     </>

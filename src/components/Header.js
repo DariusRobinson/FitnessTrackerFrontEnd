@@ -6,11 +6,11 @@ import {Logout} from "./";
 const Header = ({setCurrentUser, currentUser, setToken}) =>{
     return(
       <>
-      <header>
-          {  currentUser ?  <NavLink to="/profile">Profile</NavLink>  :  <></>}
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/routines">Routines</NavLink>
-        <NavLink to="/activities">Activities</NavLink>
+      <header className="mainHeader">
+          {  currentUser ?  <NavLink className="navlinks" to="/profile">Profile</NavLink>  :  <></>}
+        <NavLink className="navlinks" to="/">Home</NavLink>
+        <NavLink className="navlinks" to="/routines">Routines</NavLink>
+        <NavLink className="navlinks" to="/activities">Activities</NavLink>
       {  currentUser ? <Logout setToken={setToken} setCurrentUser={setCurrentUser}/>  :  <></>}
         </header>
       <br/>

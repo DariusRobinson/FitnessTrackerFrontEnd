@@ -36,7 +36,7 @@ Your id is ${userId}!`);
   return (
     <>
     
-      <h1>Welcome back! Here's a list of all your Routines</h1>
+      <h1 className="homepage">Welcome back! Here's a list of all your Routines</h1>
       <button onClick={handleOnClick}>Get user info!</button>
       <br/>
       {myRoutines && myRoutines.length ? 
@@ -111,7 +111,7 @@ Your id is ${userId}!`);
                     routineId={routineId}
                     myRoutines={myRoutines} setMyRoutines={setMyRoutines}
                   />
-                  <button className="cancelEditRoutine" onClick={()=>{
+                  <button className="cancelButton" onClick={()=>{
                     setEditRoutineActive(null)
                   }}>Cancel</button>
                 </Fragment>
@@ -122,7 +122,7 @@ Your id is ${userId}!`);
                 <Fragment>
                   <AddActivity allActivities={allActivities} routineId={routineId} myRoutines={myRoutines}
                     setMyRoutines={setMyRoutines} setAddActivtytoRoutineActive={setAddActivtytoRoutineActive}/>
-                  <button className="cancelEditRoutine" onClick={()=>{
+                  <button className="cancelButton" onClick={()=>{
                     setAddActivtytoRoutineActive(null)
                   }}>Cancel</button>
                 </Fragment>

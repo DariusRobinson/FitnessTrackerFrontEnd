@@ -36,7 +36,7 @@ setMyRoutines(deletedRoutine);
 
 
 
-return <button className="cancelButton" onClick={handleOnClick}>Delete Routine</button>
+return <button className="cancelButton" id="deleteButton" onClick={handleOnClick}>Delete Routine</button>
 
 
 
