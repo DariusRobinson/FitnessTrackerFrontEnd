@@ -29,7 +29,7 @@ const EditActivity = ({
 
   return (
     <>
-      <form onSubmit={handleOnSubmit}>
+      <form className="form" onSubmit={handleOnSubmit}>
         <input
           type="text"
           required

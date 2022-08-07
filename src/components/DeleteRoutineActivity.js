@@ -34,7 +34,7 @@ const handleOnClick = async(event)=>{
     }
     }
     return(
-    <button onClick={handleOnClick}>Remove Activity From Routine</button>
+    <button className="cancelButton" onClick={handleOnClick}>Remove Activity From Routine</button>
 
     )
 }

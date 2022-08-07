@@ -57,7 +57,7 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, allActiviti
           let creatorName = element.creatorName;
 
           return (
-            <div key={index} className="routines">
+            <div  key={index} className="routines">
               <p className="routineCreator">Created By: <NavLink to={`/routines/${creatorName}`}>{creatorName}</NavLink></p>
               <p className="routineName">{`Routine: ${element.name}`}</p>
               <p className="routineGoal">{`Goal: ${element.goal}`}</p>
@@ -137,7 +137,7 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, allActiviti
                 <Fragment>
                   <AddActivity allActivities={allActivities} routineId={routineId} allRoutines={allRoutines}
                     setAllRoutines={setAllRoutines} setAddActivtytoRoutineActive={setAddActivtytoRoutineActive}/>
-                  <button className="cancelEditRoutine" onClick={()=>{
+                  <button className="cancelButton" onClick={()=>{
                     setAddActivtytoRoutineActive(null)
                   }}>Cancel</button>
                 </Fragment>

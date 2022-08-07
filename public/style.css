@@ -1,8 +1,6 @@
 html, body {
     margin:0px;
     height:100%;
-cssBranch
-    
       background: url(https://media.giphy.com/media/26BRq9PYFLeJl3WLu/giphy.gif) no-repeat center center fixed; 
       -webkit-background-size: cover;
       -moz-background-size: cover;
@@ -11,9 +9,7 @@ cssBranch
       background-size: 940px 775px;
       background-color: #bfc3c9;
 
-  
 
-main
       
     
   }
@@ -126,6 +122,29 @@ main
     margin-left: 20px;
     margin-right: 5px;
     background-color: #ff19d9a6;
-    color: white;
+    color: black;
     box-shadow: 0 5px 10px 2px black;
   }
+.routines{
+  border: solid;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 5px;
+  background-color: #8c8e90e0;
+  color: white;
+  box-shadow: 0 5px 10px 2px black;
+}
+
+.activities{
+  border: solid;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 5px;
+  background-color: #8c8e90e0;
+  color: white;
+  box-shadow: 0 5px 10px 2px black;
+}

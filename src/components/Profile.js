@@ -66,7 +66,7 @@ Your id is ${userId}!`);
                         setIsActive(routineActivityId)}}>Edit Activity</button>
                       </>  : <></>}
                       {routineActivityId === isActive ? <><EditRoutineActivity routineActivityId={routineActivityId} token={token} myRoutines={myRoutines} setMyRoutines={setMyRoutines} setIsActive={setIsActive} routineId={routineId} count={activity.count} duration={activity.duration}/>
-                      <button onClick={()=>{setIsActive(null)}}>Cancel</button></>
+                      <button className="cancelButton" onClick={()=>{setIsActive(null)}}>Cancel</button></>
                        : <></>}
                       
 

@@ -47,7 +47,7 @@ const EditRoutineActivity = ({ routineActivityId, token, allRoutines, setAllRout
   
     return (
       <>
-        <form onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit}>
           <input
             type="text"
             value={activityCount}

@@ -60,7 +60,7 @@ if(myRoutines){
 
     return(
         <>
-        <form onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit}>
         <select defaultValue='' name="activityList">
             <option value='' disabled >Choose an activity</option>
             {allActivities.map((element, idx)=>{

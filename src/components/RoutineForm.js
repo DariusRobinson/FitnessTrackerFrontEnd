@@ -39,7 +39,7 @@ const RoutineForm = ({
 
   return (
     <>
-      <form className="routineForm" onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <label htmlFor="createNewRoutine"></label>
         <input
           id="routineTextBox"
