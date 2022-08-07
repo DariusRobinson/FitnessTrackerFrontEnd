@@ -22,7 +22,7 @@ const ActiviyForm = ({ allActivities, setAllActivities, setActive, token }) => {
 
   return (
     <>
-      <form onSubmit={handleOnSubmit}>
+      <form className="form" onSubmit={handleOnSubmit}>
         <label htmlFor="activityName">Name:</label>
         <input
           type="text"

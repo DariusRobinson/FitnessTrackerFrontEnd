@@ -126,7 +126,7 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, allActiviti
                     setAllRoutines={setAllRoutines}
                     currentUser={currentUser}
                   />
-                  <button className="cancelEditRoutine" onClick={()=>{
+                  <button className="cancelButton" onClick={()=>{
                     setEditRoutineActive(null)
                   }}>Cancel</button>
                 </Fragment>
