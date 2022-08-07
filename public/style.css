@@ -12,7 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  border: solid 2px black;
+
 }
 
 #userForm {
@@ -163,8 +163,9 @@ button {
   padding-top: 5px;
   padding-left: 10px;
   padding-right: 10px;
+  padding-bottom: 10px;
   border-top-left-radius: 15px;
-  border-top-right-radius: 5px;
+  border-radius:15px;
   
 
   display: flex;
