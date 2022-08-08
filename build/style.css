@@ -1,0 +1,206 @@
+html,
+body {
+  margin: 0px;
+  height: 100%;
+  background: url(https://media.giphy.com/media/26BRq9PYFLeJl3WLu/giphy.gif)
+    no-repeat center center fixed;
+  background-size: 940px 775px;
+  background-color: #bfc3c9;
+}
+
+#logo{ 
+  border: none; 
+  width: 150px; 
+}
+#logo:hover{ 
+  background-color: #bfc3c9
+}
+
+.homepage{
+  margin-left: 10px;
+  text-align: center;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+#userFormContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+}
+
+#userForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 2px rgb(251, 0, 0);
+  height: 250px;
+  width: 400px;
+}
+
+button {
+  border: solid black 1px;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+.tab {
+  overflow: hidden;
+  border: solid 2px rgb(251, 0, 0);
+  border-bottom: none;
+  background-color: #bfc3c9;
+}
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+.tab button.active {
+  background-color: #ccc;
+}
+
+#mainBody {
+  font-family: "Lato", sans-serif;
+  color: #888;
+  margin: 0;
+  transition: all 0.6s;
+  height: 100%;
+}
+
+#main {
+  display: table;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+}
+
+.fof {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.fof h1 {
+  font-size: 50px;
+  display: inline-block;
+  padding-right: 12px;
+  animation: type 0.5s alternate infinite;
+}
+
+@keyframes type {
+  from {
+    box-shadow: inset -3px 0px 0px #888;
+  }
+  to {
+    box-shadow: inset -3px 0px 0px transparent;
+  }
+}
+
+
+.cancelButton {
+  background-color: #ff3334;
+  color: white;
+}
+
+#deleteButton {
+  color: black;
+  font-weight: bolder;
+}
+
+.checkbox {
+  margin-left: 5px;
+}
+
+
+
+.form {
+  border: solid;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 5px;
+  background-color: #ff19d9a6;
+  color: black;
+  box-shadow: 0 5px 10px 2px black;
+}
+.routines {
+  border: solid;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 5px;
+  background-color: #8c8e90e0;
+  color: white;
+  box-shadow: 0 5px 10px 2px black;
+}
+
+.activities {
+  border: solid;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 5px;
+  background-color: #8c8e90e0;
+  color: white;
+  box-shadow: 0 5px 10px 2px black;
+}
+
+.homepage {
+  color: white;
+}
+
+.mainHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+ 
+.navlinks {
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+
+  margin-right: 15px;
+  margin-top: 15px;
+  border: solid;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  border-top-left-radius: 15px;
+  border-radius:15px;
+  
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navlinks:hover {
+  background-color: #ddd;
+}
+
+.genButton:hover{
+  background-color: #ddd;
+  
+}
+
+.cancelButton:hover{
+  background-color: darkred;
+}
