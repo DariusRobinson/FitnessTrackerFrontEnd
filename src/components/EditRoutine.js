@@ -7,7 +7,6 @@ const EditRoutine = ({
   routineId,
   name,
   goal,
-  editRoutineActive,
   setEditRoutineActive,
   allRoutines,
   setAllRoutines,
@@ -15,7 +14,7 @@ const EditRoutine = ({
 }) => {
   const [routineName, setRoutineName] = useState(name);
   const [routineGoal, setRoutineGoal] = useState(goal);
-  const [isPublic, setIsPublic] = useState(true);
+  const [isPublic, setIsPublic] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -84,7 +83,6 @@ const EditRoutine = ({
           placeholder="Enter Goal for Routine"
           onChange={(event) => {
             setRoutineGoal(event.target.value);
-            console.log(routineGoal, "goal");
           }}
         ></input>
         <label htmlFor="isPublic">Is public?</label>
@@ -93,7 +91,6 @@ const EditRoutine = ({
           id="isPublic"
           type="checkbox"
           name="isPublic"
-          checked
           onChange={(event) => {
             setIsPublic(!isPublic);
           }}

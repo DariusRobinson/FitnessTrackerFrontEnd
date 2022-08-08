@@ -1,13 +1,12 @@
 import React from "react";
-import { clearUsernameAndToken, storeToken } from "../auth";
+import { clearUsernameAndToken} from "../auth";
 
-const Logout = ({ setCurrentUser, currentUser, setToken }) => {
+const Logout = ({ setCurrentUser, setToken }) => {
   const handleOnclick = (event) => {
     event.preventDefault();
     clearUsernameAndToken();
     setCurrentUser(null);
     setToken("");
-    console.log(currentUser, "current user");
   };
 
   return <button onClick={handleOnclick}>Logout</button>;

@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { createRoutine } from "../api";
-import { clearUsernameAndToken } from "../auth";
 
 const RoutineForm = ({
   currentUser,
-  createRoutineActive,
   setCreateRoutineActive,
   token,
   allRoutines,
-  setAllRoutines, 
-  
+  setAllRoutines,
+  myRoutines,
+  setMyRoutines,
 }) => {
   const [willBePublic, setWillBePublic] = useState(false);
 
@@ -19,23 +18,27 @@ const RoutineForm = ({
     let goal = event.target.goal.value;
     let isPublic = willBePublic;
     const response = await createRoutine(name, goal, isPublic, token);
-    if(response.message === 'duplicate key value violates unique constraint "routines_name_key"'){
-      return alert('Routine Already Exists')
+    if (
+      response.message ===
+      'duplicate key value violates unique constraint "routines_name_key"'
+    ) {
+      return alert("Routine Already Exists");
     }
 
-      response.creatorName = currentUser;
+    response.creatorName = currentUser;
 
-
-
-    //make a copy of the array of routines then push the new routine we created on the copy and instantly render it without refreshing the page...
-      const routinestoDisplay = [...allRoutines, response]
-      console.log(routinestoDisplay,"ROUTINES TO DISPLAY")
-      console.log(allRoutines, "ALL ROUTINES")
+    if (myRoutines) {
+      const routinestoDisplay = [...myRoutines, response];
+      setMyRoutines(routinestoDisplay);
+      setCreateRoutineActive(false);
+      setMyRoutines(routinestoDisplay);
+      setCreateRoutineActive(false);
+    } else {
+      const routinestoDisplay = [...allRoutines, response];
       setAllRoutines(routinestoDisplay);
-      setCreateRoutineActive(false)
+      setCreateRoutineActive(false);
+    }
   };
-
-
 
   return (
     <>
@@ -55,9 +58,9 @@ const RoutineForm = ({
           name="goal"
           placeholder="Enter Your Goal"
         ></input>
-        <label htmlFor="isPublic">  Is public?</label>
+        <label htmlFor="isPublic"> Is public?</label>
         <input
-        className="checkbox"
+          className="checkbox"
           id="isPublic"
           type="checkbox"
           name="isPublic"

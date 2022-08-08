@@ -14,14 +14,11 @@ const UserPage = ({setAllRoutines, allRoutines, currentUser, token}) =>{
     }
 
     const getUserRoutines = async () =>{
-        console.log(token, 'what we sent')
         const allUserRoutines = await getPublicRoutinesByUser(token, username) 
         if(!allUserRoutines || !allUserRoutines.length){
-            console.log('this happened')
             navigate('/404page')
         }
         setUserRoutines(allUserRoutines)
-        console.log(userRoutines, 'this is what we got')
     } 
     useEffect(()=>{
         checkUser()
@@ -48,7 +45,7 @@ const UserPage = ({setAllRoutines, allRoutines, currentUser, token}) =>{
                   return (
                     <Fragment key={activityIdx}>
                       <p className="">{`Activity: ${activity.name}`}</p>
-                      <p className="">{`Activity Description :${activity.description}`}</p>
+                      <p className="">{`Activity Description: ${activity.description}`}</p>
                       <p className="">{`Reps:${activity.count}`}</p>
                       <p className="">{`Duration: ${activity.duration} interval of time that you feel the burn!`}</p>
                     </Fragment>

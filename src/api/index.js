@@ -17,7 +17,6 @@ export const registerUser = async (username, password) => {
     });
     const result = await response.json();
 
-    console.log(result);
     return result;
   } catch (error) {
     console.error(error);
@@ -38,14 +37,12 @@ export const loginUser = async (username, password) => {
       }),
     });
     const result = await response.json();
-    console.log(result);
-
     return result;
   } catch (error) {
     console.error(error);
   }
 };
-
+//Get user info
 export const getUserInfo = async (token) => {
   try {
     const response = await fetch(`${BaseURL}users/me`, {
@@ -95,7 +92,7 @@ export const createNewActivity = async (name, description, token) => {
   }
 };
 
-export const editActivity = async (activityId, name, description, token) => {
+export const editActivity = async (activityId, activityObj, token) => {
   try {
     const response = await fetch(`${BaseURL}activities/${activityId}`, {
       method: "PATCH",
@@ -103,10 +100,9 @@ export const editActivity = async (activityId, name, description, token) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        name,
-        description,
-      }),
+      body: JSON.stringify(
+        activityObj
+      ),
     });
     const result = await response.json();
     return result;
@@ -165,7 +161,6 @@ export const editRoutine = async (name, goal, isPublic, token, routineId) => {
       }),
     });
     const result = await response.json();
-    console.log(result, "new Result");
     return result;
   } catch (error) {
     console.error(error);
@@ -199,7 +194,6 @@ export const getPublicRoutinesByUser = async ( token, username) =>{
         },
       });
       const result = await response.json();
-      console.log(result, 'hopefully no promise pending!')
       return result;
     }
     const response = await fetch(`${BaseURL}users/${username}/routines`, {
@@ -208,7 +202,6 @@ export const getPublicRoutinesByUser = async ( token, username) =>{
       },
     });
     const result = await response.json();
-    console.log(result, 'hopefully no promise pending!')
     return result;
 
 
@@ -232,7 +225,6 @@ export const addActivitytoRoutine = async (routineId, activityId, count, duratio
       }),
     });
     const result = await response.json();
-    console.log(result, "new Result");
     return result;
   } catch (error) {
     console.error(error);
@@ -253,7 +245,6 @@ export const editActivityOnRoutine = async ( routineActivityId, count, duration,
       }),
     });
     const result = await response.json();
-    console.log(result, "new Result");
     return result;
   } catch (error) {
     console.error(error);
@@ -270,7 +261,6 @@ export const deleteActivityOnRoutine = async (routineActivityId, token) => {
       },
     });
     const result = await response.json();
-    console.log(result, "new Result");
     return result;
   } catch (error) {
     console.error(error);
