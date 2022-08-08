@@ -42,7 +42,7 @@ const DeleteRoutineActivity = ({
     }
   };
   return (
-    <button className="cancelButton" onClick={handleOnClick}>
+    <button className="cancelButton genButton" onClick={handleOnClick}>
       Remove Activity From Routine
     </button>
   );

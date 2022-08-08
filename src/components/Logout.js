@@ -9,7 +9,7 @@ const Logout = ({ setCurrentUser, setToken }) => {
     setToken("");
   };
 
-  return <button onClick={handleOnclick}>Logout</button>;
+  return <button className="genButton" onClick={handleOnclick}>Logout</button>;
 };
 
 export default Logout;

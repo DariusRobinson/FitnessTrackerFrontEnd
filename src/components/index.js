@@ -15,6 +15,7 @@ export {default as DeleteRoutine} from './DeleteRoutine'
 export {default as AddActivity} from './AddActivity'
 export {default as DeleteRoutineActivity} from './DeleteRoutineActivity'
 export {default as EditRoutineActivity} from './EditRoutineActivity'
+export {default as PublicRoutinesByActivity} from './PublicRoutinesByActivity'
 
 
 

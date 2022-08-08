@@ -26,7 +26,7 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, allActiviti
     <>
       {token && !createRoutineActive ? (
         <button
-          className="createRoutine"
+          className="createRoutine genButton"
           onClick={() => {
             setCreateRoutineActive(true);
           }}
@@ -61,20 +61,21 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, allActiviti
               {element.activities ? (
                 element.activities.map((activity, activityIdx) => {
                   let routineActivityId = activity.routineActivityId
+                  let name = activity.name
                   return (
                     <Fragment key={activityIdx}>
-                      <p className="">{`Activity: ${activity.name}`}</p>
+                      <p className="">Activity: <NavLink to={`/activities/${activity.id}/routines`}>{name}</NavLink></p>
                       <p className="">{`Activity Description: ${activity.description}`}</p>
                       <p className="">{`Reps: ${activity.count}`}</p>
                       <p className="">{`Duration: ${activity.duration} interval of time that you feel the burn!`}</p>
                       {creatorName === currentUser && !addActivtytoRoutineActive && !editRoutineActive && !isActive ?
                       <>
                       <DeleteRoutineActivity routineActivityId={routineActivityId} token={token} allRoutines={allRoutines} setAllRoutines={setAllRoutines} setIsActive={setIsActive} routineId={routineId}/>
-                      <button onClick={()=>{
+                      <button className='genButton' onClick={()=>{
                         setIsActive(routineActivityId)}}>Edit Activity</button>
                       </>  : <></>}
                       {routineActivityId === isActive ? <><EditRoutineActivity routineActivityId={routineActivityId} token={token} allRoutines={allRoutines} setAllRoutines={setAllRoutines} setIsActive={setIsActive} routineId={routineId} count={activity.count} duration={activity.duration} name={activity.name} description={activity.description}/>
-                      <button onClick={()=>{setIsActive(null)}}>Cancel</button></>
+                      <button className="genButton" onClick={()=>{setIsActive(null)}}>Cancel</button></>
                        : <></>}
                       
 
@@ -89,7 +90,7 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, allActiviti
               )}
               {token && !editRoutineActive && !addActivtytoRoutineActive && creatorName === currentUser && !isActive ? (
                 <Fragment>
-                <button
+                <button className='genButton'
                   onClick={() => {
                     setEditRoutineActive(routineId);
                   }}
@@ -97,7 +98,7 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, allActiviti
                   Edit Routine
                 </button>
                 <DeleteRoutine token={token} routineId={routineId} allRoutines={allRoutines} setAllRoutines={setAllRoutines} />
-                <button onClick={() => {
+                <button className='genButton' onClick={() => {
                     setAddActivtytoRoutineActive(routineId + 1);
                   }}
                 > Add Activity To Routine </button>
@@ -118,7 +119,7 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, allActiviti
                     setAllRoutines={setAllRoutines}
                     currentUser={currentUser}
                   />
-                  <button className="cancelButton" onClick={()=>{
+                  <button className='genButton' onClick={()=>{
                     setEditRoutineActive(null)
                   }}>Cancel</button>
                 </Fragment>
@@ -129,7 +130,7 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, allActiviti
                 <Fragment>
                   <AddActivity allActivities={allActivities} routineId={routineId} allRoutines={allRoutines}
                     setAllRoutines={setAllRoutines} setAddActivtytoRoutineActive={setAddActivtytoRoutineActive}/>
-                  <button className="cancelButton" onClick={()=>{
+                  <button className='genButton' onClick={()=>{
                     setAddActivtytoRoutineActive(null)
                   }}>Cancel</button>
                 </Fragment>

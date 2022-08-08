@@ -57,7 +57,7 @@ const EditActivity = ({
 
           placeholder="Enter Description"
         ></input>
-        <button className="activityFormButton">Edit Activity</button>
+        <button className="activityFormButton genButton">Edit Activity</button>
       </form>
     </>
   );

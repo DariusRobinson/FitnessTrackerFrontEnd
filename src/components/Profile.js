@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { getUserInfo, getPublicRoutinesByUser } from "../api";
 import {
   DeleteRoutine,
@@ -45,10 +45,10 @@ Your id is ${userId}!`);
       <h1 className="homepage">
         Welcome back! Here's a list of all your Routines
       </h1>
-      <button onClick={handleOnClick}>Get user info!</button>
+      <button className="genButton" onClick={handleOnClick}>Get user info!</button>
       {!createRoutineActive ? (
         <button
-          className="createRoutine"
+          className="createRoutine genButton"
           onClick={() => {
             setCreateRoutineActive(true);
           }}
@@ -85,9 +85,10 @@ Your id is ${userId}!`);
                 {element.activities ? (
                   element.activities.map((activity, activityIdx) => {
                     let routineActivityId = activity.routineActivityId;
+                    let name = activity.name
                     return (
                       <Fragment key={activityIdx}>
-                        <p className="">{`Activity: ${activity.name}`}</p>
+                        <p className="">Activity: <NavLink to={`/activities/${activity.id}/routines`}>{name}</NavLink></p>
                         <p className="">{`Activity Description: ${activity.description}`}</p>
                         <p className="">{`Reps: ${activity.count}`}</p>
                         <p className="">{`Duration: ${activity.duration} interval of time that you feel the burn!`}</p>
@@ -104,6 +105,7 @@ Your id is ${userId}!`);
                               routineId={routineId}
                             />
                             <button
+                            className="genButton"
                               onClick={() => {
                                 setIsActive(routineActivityId);
                               }}
@@ -127,7 +129,7 @@ Your id is ${userId}!`);
                               duration={activity.duration}
                             />
                             <button
-                              className="cancelButton"
+                              className="cancelButton genButton"
                               onClick={() => {
                                 setIsActive(null);
                               }}
@@ -150,6 +152,7 @@ Your id is ${userId}!`);
                 {!editRoutineActive && !addActivtytoRoutineActive ? (
                   <Fragment>
                     <button
+                    className="genButton"
                       onClick={() => {
                         setEditRoutineActive(routineId);
                       }}
@@ -163,6 +166,7 @@ Your id is ${userId}!`);
                       setMyRoutines={setMyRoutines}
                     />
                     <button
+                    className="genButton"
                       onClick={() => {
                         setAddActivtytoRoutineActive(routineId + 1);
                       }}
@@ -188,7 +192,7 @@ Your id is ${userId}!`);
                       setMyRoutines={setMyRoutines}
                     />
                     <button
-                      className="cancelButton"
+                      className="cancelButton genButton"
                       onClick={() => {
                         setEditRoutineActive(null);
                       }}
@@ -211,7 +215,7 @@ Your id is ${userId}!`);
                       }
                     />
                     <button
-                      className="cancelButton"
+                      className="cancelButton genButton"
                       onClick={() => {
                         setAddActivtytoRoutineActive(null);
                       }}

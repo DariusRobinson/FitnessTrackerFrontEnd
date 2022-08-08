@@ -1,38 +1,40 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useParams, NavLink, useNavigate } from "react-router-dom";
-import { getPublicRoutinesByUser } from "../api";
+import { getPublicRoutinesByActivity } from "../api";
 
 
-const UserPage = ({currentUser, token}) =>{
-    const [userRoutines, setUserRoutines] = useState([])
-    const {username} = useParams()
+
+
+const PublicRoutinesByActivity = ({allActivities}) =>{
+    const [activityRoutines, setActivityRoutines] = useState([])
+    const {activityId} = useParams()
+    const [currentActivityName, setCurrentActivityName] = useState('')
     const navigate = useNavigate()
-    const checkUser = () =>{
-        if(username === currentUser){
-            navigate('/Profile')
-        }
-    }
 
-    const getUserRoutines = async () =>{
-        const allUserRoutines = await getPublicRoutinesByUser(token, username) 
-        if(!allUserRoutines || !allUserRoutines.length){
+    const getActivityRoutines = async () =>{
+    
+        const allActivityRoutines = await getPublicRoutinesByActivity(activityId) 
+        if(!allActivityRoutines || !allActivityRoutines.length){
             navigate('/404page')
         }
-        setUserRoutines(allUserRoutines)
+        setActivityRoutines(allActivityRoutines)
+        allActivities.map((activity)=>{
+            if(activity.id == activityId ){
+            setCurrentActivityName(activity.name)
+        }
+        })
     } 
-    useEffect(()=>{
-        checkUser()
-    }, )
+    
     useEffect(() =>{
-        getUserRoutines()
+        getActivityRoutines()
     },[])
 
     
     
     
     return <>
-    <h1>Check Out {username}'s Routines!</h1>
-    {userRoutines.map((element, index) => {
+    <h1>Check Out all Routines that Feature {currentActivityName}!</h1>
+    {activityRoutines.map((element, index) => {
        let creatorName = element.creatorName
        let goal = element.goal
        return(
@@ -42,12 +44,12 @@ const UserPage = ({currentUser, token}) =>{
               <p className="routineGoal">{`Goal: ${element.goal}`}</p>
               {element.activities ? (
                 element.activities.map((activity, activityIdx) => {
-                  let name = activity.name
+                    let name = activity.name
                   return (
                     <Fragment key={activityIdx}>
                       <p className="">Activity: <NavLink to={`/activities/${activity.id}/routines`}>{name}</NavLink></p>
                       <p className="">{`Activity Description: ${activity.description}`}</p>
-                      <p className="">{`Reps:${activity.count}`}</p>
+                      <p className="">{`Reps: ${activity.count}`}</p>
                       <p className="">{`Duration: ${activity.duration} interval of time that you feel the burn!`}</p>
                     </Fragment>
                   );
@@ -64,4 +66,6 @@ const UserPage = ({currentUser, token}) =>{
 }
 
 
-export default UserPage
+
+
+export default PublicRoutinesByActivity

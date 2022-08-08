@@ -35,7 +35,7 @@ const DeleteRoutine = ({
   };
 
   return (
-    <button className="cancelButton" id="deleteButton" onClick={handleOnClick}>
+    <button className="cancelButton genButton" id="deleteButton" onClick={handleOnClick}>
       Delete Routine
     </button>
   );

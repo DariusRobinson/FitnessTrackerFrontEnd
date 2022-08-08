@@ -88,7 +88,7 @@ const EditRoutineActivity = ({
             setActivityDuration(event.target.value);
           }}
         ></input>
-        <button type="submit" className="EditRoutineActivityFormButton">
+        <button type="submit" className="EditRoutineActivityFormButton genButton">
           Save Changes
         </button>
       </form>

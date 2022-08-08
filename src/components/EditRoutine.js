@@ -95,7 +95,7 @@ const EditRoutine = ({
             setIsPublic(!isPublic);
           }}
         ></input>
-        <button className="EditRoutineFormButton">Save Changes</button>
+        <button className="EditRoutineFormButton genButton">Save Changes</button>
       </form>
     </>
   );

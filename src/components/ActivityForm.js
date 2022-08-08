@@ -34,7 +34,7 @@ const ActiviyForm = ({ allActivities, setAllActivities, setActive, token }) => {
           name="description"
           placeholder="Enter Description"
         ></input>
-        <button type="submit" className="activityFormButton">
+        <button  type="submit" className="activityFormButton genButton">
           Create Activity
         </button>
       </form>

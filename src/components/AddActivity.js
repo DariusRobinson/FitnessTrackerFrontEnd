@@ -107,7 +107,7 @@ const AddActivity = ({
           name="duration"
           placeholder="Enter duration"
         ></input>
-        <button type="submit">Submit</button>
+        <button className='genButton' type="submit">Submit</button>
       </form>
     </>
   );

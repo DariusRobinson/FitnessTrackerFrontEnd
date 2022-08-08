@@ -68,12 +68,12 @@ const RoutineForm = ({
             setWillBePublic(!willBePublic);
           }}
         ></input>
-        <button type="submit" className="activityFormButton">
+        <button type="submit" className="activityFormButton genButton">
           Create Routine
         </button>
       </form>
       <button
-        className="cancelButton"
+        className="cancelButton genButton"
         onClick={() => {
           setCreateRoutineActive(false);
         }}

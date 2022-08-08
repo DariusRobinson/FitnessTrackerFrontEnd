@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import ActiviyForm from "./ActivityForm";
 import EditActivity from "./EditActivity";
 
@@ -10,7 +11,7 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
     <>
       {token && !active ? (
         <button
-          className="activityFormButton"
+          className="activityFormButton genButton"
           onClick={() => {
             setActive(true);
           }}
@@ -30,7 +31,7 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
               token={token}
             />
             <button
-              className="cancelButton"
+              className="cancelButton, genButton"
               onClick={() => {
                 setActive(false);
               }}
@@ -49,7 +50,7 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
         let activityDescription = element.description;
         return (
           <div key={index} className="activities">
-            <h4 className="activityName">{element.name}</h4>
+            <h4 className="activityName"><NavLink to={`/activities/${activityId}/routines`}>{activityName}</NavLink></h4>
             <p className="activityDescription">{element.description}</p>
             {token ? (
               <>
@@ -65,7 +66,7 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
                       activityDescription={activityDescription}
                     />
                     <button
-                      className="cancelButton"
+                      className="cancelButton genButton"
                       onClick={() => {
                         setEditActive(null);
                       }}
@@ -75,7 +76,7 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
                   </>
                 ) : (
                   <button
-                    className="activityFormButton"
+                    className="activityFormButton genButton"
                     value={activityId}
                     onClick={(event) => {
                       setEditActive(Number(event.target.value));

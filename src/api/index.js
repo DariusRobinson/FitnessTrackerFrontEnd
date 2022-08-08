@@ -266,3 +266,20 @@ export const deleteActivityOnRoutine = async (routineActivityId, token) => {
     console.error(error);
   }
 };
+
+
+export const getPublicRoutinesByActivity = async(activityId)=> {
+  try {
+    const response = await fetch(`${BaseURL}activities/${activityId}/routines`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const result = await response.json();
+    return result;
+
+
+  } catch (error) {
+    console.error(error)
+  }
+}
