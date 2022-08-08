@@ -27,7 +27,7 @@ const PublicRoutinesByActivity = ({allActivities}) =>{
     
     useEffect(() =>{
         getActivityRoutines()
-    },[])
+    },[currentActivityName])
 
     
     
@@ -47,7 +47,8 @@ const PublicRoutinesByActivity = ({allActivities}) =>{
                     let name = activity.name
                   return (
                     <Fragment key={activityIdx}>
-                      <p className="">Activity: <NavLink to={`/activities/${activity.id}/routines`}>{name}</NavLink></p>
+                      <p className="">Activity: <NavLink onClick={()=>{
+                        setCurrentActivityName(name)}} to={`/activities/${activity.id}/routines`}>{name}</NavLink></p>
                       <p className="">{`Activity Description: ${activity.description}`}</p>
                       <p className="">{`Reps: ${activity.count}`}</p>
                       <p className="">{`Duration: ${activity.duration} interval of time that you feel the burn!`}</p>
