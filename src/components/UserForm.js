@@ -15,7 +15,6 @@ const UserForm = ({ logInOrRegister, setLogInOrRegister, setCurrentUser, setToke
   let navigate = useNavigate()
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // console.log(event.target.username.value)
     let username = event.target.username.value;
     let password = event.target.password.value;
     if (logInOrRegister === "Login") {
@@ -79,7 +78,7 @@ const UserForm = ({ logInOrRegister, setLogInOrRegister, setCurrentUser, setToke
           <input type="text" required name="username" placeholder="Username" />
           <br></br>
           <label htmlFor="password">Password:</label>
-          <input type="text" required name="password" placeholder="Password" />
+          <input type="password" required name="password" placeholder="Password" />
           <button name="user" type="submit">
             {logInOrRegister}
           </button>

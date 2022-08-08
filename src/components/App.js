@@ -14,7 +14,6 @@ const App = () => {
 
   const fetchActivities = async () => {
     const activityList = await getAllActivities();
-    console.log(activityList, "this is the activity list");
     setAllActivities(activityList);
   };
 
@@ -30,7 +29,7 @@ const App = () => {
 
             <Route index element={ <Home currentUser={currentUser} setCurrentUser={setCurrentUser} setToken={setToken} /> } />
 
-            <Route path="/profile" element={<Profile token={token} currentUser={currentUser} allRoutines={allRoutines} allActivities={allActivities} setAllRoutines={setAllRoutines} />} />
+            <Route path="/profile" element={<Profile token={token} currentUser={currentUser} allActivities={allActivities} setAllRoutines={setAllRoutines} />} />
 
             <Route path="/routines" element={ <Routines currentUser={currentUser} token={token} allRoutines={allRoutines} setAllRoutines={setAllRoutines} allActivities={allActivities}/> } />
             <Route path="/routines/:username" element={ <UserPage currentUser={currentUser} token={token} allRoutines={allRoutines} setAllRoutines={setAllRoutines} /> } />

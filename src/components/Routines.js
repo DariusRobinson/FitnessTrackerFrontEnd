@@ -17,7 +17,6 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, allActiviti
   const fetchRoutines = async () => {
     const routinesToDisplay = await getAllRoutines();
     setAllRoutines(routinesToDisplay);
-    console.log(allRoutines);
   };
 
   useEffect(() => {
@@ -29,7 +28,6 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, allActiviti
         <button
           className="createRoutine"
           onClick={() => {
-            console.log("i was clicked");
             setCreateRoutineActive(true);
           }}
         >
@@ -42,7 +40,6 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, allActiviti
       {createRoutineActive ? (
         <RoutineForm
           currentUser={currentUser}
-          createRoutineActive={createRoutineActive}
           setCreateRoutineActive={setCreateRoutineActive}
           token={token}
           allRoutines={allRoutines}
@@ -67,15 +64,13 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, allActiviti
                   return (
                     <Fragment key={activityIdx}>
                       <p className="">{`Activity: ${activity.name}`}</p>
-                      <p className="">{`Activity Description :${activity.description}`}</p>
-                      <p className="">{`Reps:${activity.count}`}</p>
+                      <p className="">{`Activity Description: ${activity.description}`}</p>
+                      <p className="">{`Reps: ${activity.count}`}</p>
                       <p className="">{`Duration: ${activity.duration} interval of time that you feel the burn!`}</p>
                       {creatorName === currentUser && !addActivtytoRoutineActive && !editRoutineActive && !isActive ?
                       <>
                       <DeleteRoutineActivity routineActivityId={routineActivityId} token={token} allRoutines={allRoutines} setAllRoutines={setAllRoutines} setIsActive={setIsActive} routineId={routineId}/>
                       <button onClick={()=>{
-                        console.log(routineActivityId, 'what we set it to')
-                        console.log(isActive, 'the static comparison')
                         setIsActive(routineActivityId)}}>Edit Activity</button>
                       </>  : <></>}
                       {routineActivityId === isActive ? <><EditRoutineActivity routineActivityId={routineActivityId} token={token} allRoutines={allRoutines} setAllRoutines={setAllRoutines} setIsActive={setIsActive} routineId={routineId} count={activity.count} duration={activity.duration} name={activity.name} description={activity.description}/>
@@ -96,7 +91,6 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, allActiviti
                 <Fragment>
                 <button
                   onClick={() => {
-                    console.log(routineId, "routine id");
                     setEditRoutineActive(routineId);
                   }}
                 >
@@ -104,7 +98,6 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, allActiviti
                 </button>
                 <DeleteRoutine token={token} routineId={routineId} allRoutines={allRoutines} setAllRoutines={setAllRoutines} />
                 <button onClick={() => {
-                    console.log(routineId, "routine id");
                     setAddActivtytoRoutineActive(routineId + 1);
                   }}
                 > Add Activity To Routine </button>
@@ -116,7 +109,6 @@ const Routines = ({ allRoutines, setAllRoutines, token, currentUser, allActiviti
               {editRoutineActive === routineId ? (
                 <Fragment>
                   <EditRoutine
-                    editRoutineActive={editRoutineActive}
                     setEditRoutineActive={setEditRoutineActive}
                     name={element.name}
                     goal={element.goal}

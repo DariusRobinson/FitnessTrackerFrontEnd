@@ -7,15 +7,12 @@ const ActiviyForm = ({ allActivities, setAllActivities, setActive, token }) => {
     let name = event.target.name.value;
     let description = event.target.description.value;
     const response = await createNewActivity(name, description, token);
-    console.log(response, "this is response");
     if (response.name === "ActivityAlreadyMade" && response.error) {
       setActive(false);
       return alert("Activity already exists");
     }
 
     const activitiestoDisplay = [...allActivities, response];
-    // console.log(activitiestoDisplay, "this is what we want to have");
-    // console.log(allActivities, "this is what was copied");
     setAllActivities(activitiestoDisplay);
     setActive(false);
   };

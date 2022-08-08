@@ -6,8 +6,6 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
   const [active, setActive] = useState(false);
   const [editActive, setEditActive] = useState(null);
 
-
-
   return (
     <>
       {token && !active ? (
@@ -47,6 +45,8 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
 
       {allActivities.map((element, index) => {
         let activityId = element.id;
+        let activityName = element.name;
+        let activityDescription = element.description;
         return (
           <div key={index} className="activities">
             <h4 className="activityName">{element.name}</h4>
@@ -61,6 +61,8 @@ const Activities = ({ allActivities, setAllActivities, token }) => {
                       setEditActive={setEditActive}
                       token={token}
                       activityId={activityId}
+                      activityName={activityName}
+                      activityDescription={activityDescription}
                     />
                     <button
                       className="cancelButton"
